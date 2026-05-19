@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Classifier</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .container{
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+
+        textarea{
+            width: 90%;
+            height: 120px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button{
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #0056b3;
+        }
+
+        .result{
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .spam{
+            color: red;
+        }
+
+        .ham{
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📩 Spam vs Ham Classifier</h1>
+
+        <form method="POST">
+
+            <textarea 
+                name="message" 
+                placeholder="Enter your message here..."
+                required>
+            </textarea>
+
+            <br><br>
+
+            <button type="submit">
+                Predict
+            </button>
+
+        </form>
+
+        {% if prediction %}
+
+            <div class="result">
+
+                Prediction:
+
+                {% if prediction == "spam" %}
+                    <span class="spam">SPAM 🚨</span>
+                {% else %}
+                    <span class="ham">NOT SPAM ✅</span>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
